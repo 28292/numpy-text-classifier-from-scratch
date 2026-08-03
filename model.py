@@ -14,8 +14,10 @@ def clean_text(text: str) -> str:
     text = text.lower()
     return re.sub(r"[^a-zA-Z]", " ", text).strip()
 
-# Step 2 - tokenize (not yet solved)
-# TODO: implement
+# Step 2 - tokenize
+def tokenize(text: str) -> list[str]:
+    # TODO: Split cleaned text on whitespace into non-empty word tokens
+    return text.split()
 
 # Step 3 - tokenize_corpus (not yet solved)
 # TODO: implement
