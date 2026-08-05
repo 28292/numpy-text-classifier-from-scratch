@@ -55,8 +55,17 @@ def count_word_frequencies(tokenized_docs: list) -> dict:
             word_count_dict[token] = word_count_dict.get(token, 0) + 1
     return word_count_dict
 
-# Step 6 - build_vocabulary (not yet solved)
-# TODO: implement
+# Step 6 - build_vocabulary
+def build_vocabulary(word_counts: dict, max_size: int) -> dict:
+    top_words = sorted(
+        word_counts.items(),
+        key=lambda item: (-item[1], item[0])
+    )[:max_size]
+
+    return {
+        word: index
+        for index, (word, count) in enumerate(top_words)
+    }
 
 # Step 7 - tokens_to_bow (not yet solved)
 # TODO: implement
