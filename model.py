@@ -57,15 +57,11 @@ def count_word_frequencies(tokenized_docs: list) -> dict:
 
 # Step 6 - build_vocabulary
 def build_vocabulary(word_counts: dict, max_size: int) -> dict:
-    top_words = sorted(
-        word_counts.items(),
-        key=lambda item: (-item[1], item[0])
-    )[:max_size]
-
-    return {
-        word: index
-        for index, (word, count) in enumerate(top_words)
-    }
+    result_dict = {}
+    max_word_list = sorted(word_counts.items(), key = lambda item: (-item[1], item[0]), reverse = False)[:max_size]
+    for index, (word, count) in enumerate(max_word_list):
+        result_dict[word] = index
+    return result_dict
 
 # Step 7 - tokens_to_bow
 def tokens_to_bow(tokens: list, vocab: dict) -> np.ndarray:
