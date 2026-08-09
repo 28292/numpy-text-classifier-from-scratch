@@ -85,8 +85,14 @@ def corpus_to_bow_matrix(tokenized_docs: list, vocab: dict) -> np.ndarray:
         matrix[row_index] = tokens_to_bow(tokens, vocab)
     return matrix
 
-# Step 9 - compute_document_frequencies (not yet solved)
-# TODO: implement
+# Step 9 - compute_document_frequencies
+def compute_document_frequencies(bow_matrix: np.ndarray) -> np.ndarray:
+    # TODO: Count docs where each term appears at least once (df, shape (V,))
+    # Find where count > 0
+    x = [[(lambda value: value > 0)(value) for value in values] for row_index,values in enumerate(bow_matrix)]
+    # Count across documents
+    result = np.array([sum(i) for i in zip(*x)])
+    return result
 
 # Step 10 - compute_idf (not yet solved)
 # TODO: implement
