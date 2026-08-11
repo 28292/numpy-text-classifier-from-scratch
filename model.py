@@ -110,8 +110,11 @@ def transform_tfidf(bow_matrix: np.ndarray, idf: np.ndarray) -> np.ndarray:
     result = bow_matrix * idf
     return result
 
-# Step 12 - fit_tfidf (not yet solved)
-# TODO: implement
+# Step 12 - fit_tfidf
+def fit_tfidf(bow_train: np.ndarray) -> np.ndarray:
+    # TODO: Fit IDF on the training BoW matrix by chaining DF and IDF.
+    df = compute_document_frequencies(bow_train)
+    return compute_idf(df, bow_train.shape[0])
 
 # Step 13 - sigmoid (not yet solved)
 # TODO: implement
