@@ -94,8 +94,15 @@ def compute_document_frequencies(bow_matrix: np.ndarray) -> np.ndarray:
     result = np.array([sum(i) for i in zip(*x)])
     return result
 
-# Step 10 - compute_idf (not yet solved)
-# TODO: implement
+# Step 10 - compute_idf
+import math
+
+def compute_idf(df: np.ndarray, n_docs: int) -> np.ndarray:
+    # TODO: Compute smoothed IDF idf_j = log((n_docs + 1) / (df_j + 1)) + 1
+    numerator = n_docs + 1
+    denominator = df + 1
+    result = np.log(numerator / denominator) + 1
+    return result
 
 # Step 11 - transform_tfidf (not yet solved)
 # TODO: implement
