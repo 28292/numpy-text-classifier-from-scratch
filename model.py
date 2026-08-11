@@ -116,8 +116,12 @@ def fit_tfidf(bow_train: np.ndarray) -> np.ndarray:
     df = compute_document_frequencies(bow_train)
     return compute_idf(df, bow_train.shape[0])
 
-# Step 13 - sigmoid (not yet solved)
-# TODO: implement
+# Step 13 - sigmoid
+def sigmoid(z: np.ndarray) -> np.ndarray:
+    result = np.array([1/(1+np.exp(-v)) for v in z])
+    return result
+
+    # TODO: Map logits to probabilities with a numerically stable logistic sigmoid.
 
 # Step 14 - logistic_predict_proba (not yet solved)
 # TODO: implement
