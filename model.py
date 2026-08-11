@@ -104,8 +104,11 @@ def compute_idf(df: np.ndarray, n_docs: int) -> np.ndarray:
     result = np.log(numerator / denominator) + 1
     return result
 
-# Step 11 - transform_tfidf (not yet solved)
-# TODO: implement
+# Step 11 - transform_tfidf
+def transform_tfidf(bow_matrix: np.ndarray, idf: np.ndarray) -> np.ndarray:
+    # TODO: Multiply BoW counts by the fitted IDF vector to produce TF-IDF features.
+    result = bow_matrix * idf
+    return result
 
 # Step 12 - fit_tfidf (not yet solved)
 # TODO: implement
