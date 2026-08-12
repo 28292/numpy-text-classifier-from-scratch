@@ -167,8 +167,9 @@ def logistic_gradients(X: np.ndarray, y_true: np.ndarray, y_prob: np.ndarray, w:
 
     X_T = np.transpose(X)
     length_output = len(y_true)
-    dw = X_T @ (y_prob - y_true) / length_output
-    db = (y_prob - y_true) / length_output
+    error = y_prob - y_true
+    dw = X_T @ error / length_output + l2_lambda * w
+    db = np.sum(error) / length_output
     return dw, db
 
 
@@ -182,8 +183,19 @@ def initialize_logistic_params(n_features: int) -> tuple:
     b = 0.0
     return w, b
 
-# Step 18 - gradient_descent_step (not yet solved)
-# TODO: implement
+# Step 18 - gradient_descent_step
+def gradient_descent_step(X: np.ndarray, y: np.ndarray, w: np.ndarray, b: float, lr: float, l2_lambda: float) -> tuple:
+    # TODO: Run one full-batch gradient descent update; return (w_new, b_new, loss).
+    # prediction
+    y_prob = logistic_predict_proba(X, w,b)
+    # Loss before updating
+    loss = binary_cross_entropy(y, y_prob, w, l2_lambda)
+    # calculate gradient
+    dw, db = logistic_gradients(X, y, y_prob, w, l2_lambda)
+    # update paramter
+    w_new = w - lr * dw
+    b_new = b - lr * db
+    return w_new, b_new, float(loss)
 
 # Step 19 - train_logistic_regression (not yet solved)
 # TODO: implement
