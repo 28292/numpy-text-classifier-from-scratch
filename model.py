@@ -167,17 +167,20 @@ def logistic_gradients(X: np.ndarray, y_true: np.ndarray, y_prob: np.ndarray, w:
 
     X_T = np.transpose(X)
     length_output = len(y_true)
-    error = y_prob - y_true
-    dw = X_T @ error / length_output + l2_lambda * w
-    db = np.sum(error) / length_output
+    dw = X_T @ (y_prob - y_true) / length_output
+    db = (y_prob - y_true) / length_output
     return dw, db
 
 
 
     # TODO: Compute gradients of BCE+L2 w.r.t. weights and bias for one full batch.
 
-# Step 17 - initialize_logistic_params (not yet solved)
-# TODO: implement
+# Step 17 - initialize_logistic_params
+def initialize_logistic_params(n_features: int) -> tuple:
+    # TODO: Return a zero weight vector of shape (n_features,) and bias 0.0
+    w = np.zeros(n_features, dtype=float)
+    b = 0.0
+    return w, b
 
 # Step 18 - gradient_descent_step (not yet solved)
 # TODO: implement
