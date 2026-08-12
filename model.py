@@ -130,8 +130,25 @@ def logistic_predict_proba(X: np.ndarray, w: np.ndarray, b: float) -> np.ndarray
     prob = sigmoid(logistic_vector)
     return prob
 
-# Step 15 - binary_cross_entropy (not yet solved)
-# TODO: implement
+# Step 15 - binary_cross_entropy
+def binary_cross_entropy(y_true: np.ndarray, y_prob: np.ndarray, w: np.ndarray, l2_lambda: float) -> float:
+    # TODO: Compute mean binary cross-entropy plus L2 penalty on the weights.
+    length_y_label = len(y_true)
+    losses = []
+    for i, j in zip(y_true, y_prob):
+        single_loss = (np.log(j)*i + (1-i)*np.log(1-j))* -1
+        losses.append(single_loss)
+    mean_bce = np.sum(losses)/length_y_label
+
+    # Part 2: calculate L2 penalty
+    weight_sum = np.sum(w**2)
+
+    l2_score = 0.5 * l2_lambda * weight_sum
+    # Total loss
+    total_loss = mean_bce + l2_score
+    
+    
+    return total_loss
 
 # Step 16 - logistic_gradients (not yet solved)
 # TODO: implement
