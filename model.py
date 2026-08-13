@@ -197,8 +197,28 @@ def gradient_descent_step(X: np.ndarray, y: np.ndarray, w: np.ndarray, b: float,
     b_new = b - lr * db
     return w_new, b_new, float(loss)
 
-# Step 19 - train_logistic_regression (not yet solved)
-# TODO: implement
+# Step 19 - train_logistic_regression
+def train_logistic_regression(X: np.ndarray, y: np.ndarray, lr: float, l2_lambda: float, n_epochs: int) -> tuple:
+    # TODO: Initialize params and run n_epochs of full-batch GD, recording loss...
+    """
+    training_matrix_X(N,D)
+    label_t(N,)
+    weight_vector_w(D,)
+    bias_b:float
+    len_loss = n_epochs
+
+    """
+    # read feature fimension
+    n_features = X.shape[1]
+    w,b = initialize_logistic_params(n_features)
+    losses = []
+    for epoch in range(n_epochs):
+        w_new, b_new, loss = gradient_descent_step(X, y, w, b, lr, l2_lambda)
+        w = w_new
+        b = b_new
+        losses.append(loss)
+    
+    return w, b, losses
 
 # Step 20 - predict_labels (not yet solved)
 # TODO: implement
