@@ -241,8 +241,23 @@ def predict_labels(proba: np.ndarray, threshold: float = 0.5) -> np.ndarray:
         result.append(label)
     return np.array(result, dtype=int)
 
-# Step 21 - confusion_counts (not yet solved)
-# TODO: implement
+# Step 21 - confusion_counts
+def confusion_counts(y_true: np.ndarray, y_pred: np.ndarray) -> tuple:
+    # TODO: Return the four confusion-matrix counts (tp, fp, tn, fn) as Python ints
+    tp = 0
+    fp = 0
+    tn = 0
+    fn = 0
+    for i, j in zip(y_true, y_pred):
+        if i == 1 and j == 1: 
+            tp += 1
+        elif i == 0 and j == 1:
+            fp += 1
+        elif i == 0 and j == 0:
+            tn += 1
+        elif i ==1 and j == 0:
+            fn += 1
+    return tp,fp,tn,fn
 
 # Step 22 - metrics_from_counts (not yet solved)
 # TODO: implement
