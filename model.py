@@ -11,8 +11,9 @@ import re
 def clean_text(text: str) -> str:
     # TODO: Lowercase text and replace non-alphabetic chars with spaces
     # lowercase the input
-    text = text.lower()
-    return re.sub(r"[^a-zA-Z]", " ", text).strip()
+   text = text.lower()
+   text = re.sub("[^a-zA-Z]", " ", text).strip()
+   return text
 
 # Step 2 - tokenize
 def tokenize(text: str) -> list[str]:
