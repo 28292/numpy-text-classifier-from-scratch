@@ -343,8 +343,21 @@ def evaluate_predictions(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     }
     return report
 
-# Step 25 - vectorize_texts (not yet solved)
-# TODO: implement
+# Step 25 - vectorize_texts
+def vectorize_texts(texts: list, vocab: dict, idf: np.ndarray) -> np.ndarray:
+    tokenized_docs = tokenize_corpus(texts)
+
+    bow_matrix = corpus_to_bow_matrix(
+        tokenized_docs,
+        vocab
+    )
+
+    tfidf_matrix = transform_tfidf(
+        bow_matrix,
+        idf
+    )
+
+    return tfidf_matrix
 
 # Step 26 - predict_text (not yet solved)
 # TODO: implement
